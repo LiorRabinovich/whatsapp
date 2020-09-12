@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -46,107 +46,110 @@ const useStyles = makeStyles((theme) => ({
 
 export default function FriendsList() {
   const classes = useStyles();
-  const [firends, setFriends] = useState([{
-    name: 'Lior Rabinovich',
-    image: 'https://material-ui.com/static/images/avatar/1.jpg',
-    lastMessage: 'Hello world...',
-    date: '12/09/2020'
-  }, {
-    name: 'Lior Rabinovich',
-    image: 'https://material-ui.com/static/images/avatar/1.jpg',
-    lastMessage: 'Hello world...',
-    date: '12/09/2020'
-  }, {
-    name: 'Lior Rabinovich',
-    image: 'https://material-ui.com/static/images/avatar/1.jpg',
-    lastMessage: 'Hello world...',
-    date: '12/09/2020'
-  }, {
-    name: 'Lior Rabinovich',
-    image: 'https://material-ui.com/static/images/avatar/1.jpg',
-    lastMessage: 'Hello world...',
-    date: '12/09/2020'
-  }, {
-    name: 'Lior Rabinovich',
-    image: 'https://material-ui.com/static/images/avatar/1.jpg',
-    lastMessage: 'Hello world...',
-    date: '12/09/2020'
-  }, {
-    name: 'Lior Rabinovich',
-    image: 'https://material-ui.com/static/images/avatar/1.jpg',
-    lastMessage: 'Hello world...',
-    date: '12/09/2020'
-  }, {
-    name: 'Lior Rabinovich',
-    image: 'https://material-ui.com/static/images/avatar/1.jpg',
-    lastMessage: 'Hello world...',
-    date: '12/09/2020'
-  }, {
-    name: 'Lior Rabinovich',
-    image: 'https://material-ui.com/static/images/avatar/1.jpg',
-    lastMessage: 'Hello world...',
-    date: '12/09/2020'
-  }, {
-    name: 'Lior Rabinovich',
-    image: 'https://material-ui.com/static/images/avatar/1.jpg',
-    lastMessage: 'Hello world...',
-    date: '12/09/2020'
-  }, {
-    name: 'Lior Rabinovich',
-    image: 'https://material-ui.com/static/images/avatar/1.jpg',
-    lastMessage: 'Hello world...',
-    date: '12/09/2020'
-  }, {
-    name: 'Lior Rabinovich',
-    image: 'https://material-ui.com/static/images/avatar/1.jpg',
-    lastMessage: 'Hello world...',
-    date: '12/09/2020'
-  }, {
-    name: 'Lior Rabinovich',
-    image: 'https://material-ui.com/static/images/avatar/1.jpg',
-    lastMessage: 'Hello world...',
-    date: '12/09/2020'
-  }, {
-    name: 'Lior Rabinovich',
-    image: 'https://material-ui.com/static/images/avatar/1.jpg',
-    lastMessage: 'Hello world...',
-    date: '12/09/2020'
-  }, {
-    name: 'Lior Rabinovich',
-    image: 'https://material-ui.com/static/images/avatar/1.jpg',
-    lastMessage: 'Hello world...',
-    date: '12/09/2020'
-  }, {
-    name: 'Lior Rabinovich',
-    image: 'https://material-ui.com/static/images/avatar/1.jpg',
-    lastMessage: 'Hello world...',
-    date: '12/09/2020'
-  }, {
-    name: 'Lior Rabinovich',
-    image: 'https://material-ui.com/static/images/avatar/1.jpg',
-    lastMessage: 'Hello world...',
-    date: '12/09/2020'
-  }, {
-    name: 'Lior Rabinovich',
-    image: 'https://material-ui.com/static/images/avatar/1.jpg',
-    lastMessage: 'Hello world...',
-    date: '12/09/2020'
-  }, {
-    name: 'Lior Rabinovich',
-    image: 'https://material-ui.com/static/images/avatar/1.jpg',
-    lastMessage: 'Hello world...',
-    date: '12/09/2020'
-  }])
+  const [firends, setFriends] = useState([])
+
+  useEffect(() => {
+    setFriends([{
+      name: 'Lior Rabinovich',
+      image: 'https://material-ui.com/static/images/avatar/1.jpg',
+      lastMessage: 'Hello world...',
+      date: '12/09/2020'
+    }, {
+      name: 'Lior Rabinovich',
+      image: 'https://material-ui.com/static/images/avatar/1.jpg',
+      lastMessage: 'Hello world...',
+      date: '12/09/2020'
+    }, {
+      name: 'Lior Rabinovich',
+      image: 'https://material-ui.com/static/images/avatar/1.jpg',
+      lastMessage: 'Hello world...',
+      date: '12/09/2020'
+    }, {
+      name: 'Lior Rabinovich',
+      image: 'https://material-ui.com/static/images/avatar/1.jpg',
+      lastMessage: 'Hello world...',
+      date: '12/09/2020'
+    }, {
+      name: 'Lior Rabinovich',
+      image: 'https://material-ui.com/static/images/avatar/1.jpg',
+      lastMessage: 'Hello world...',
+      date: '12/09/2020'
+    }, {
+      name: 'Lior Rabinovich',
+      image: 'https://material-ui.com/static/images/avatar/1.jpg',
+      lastMessage: 'Hello world...',
+      date: '12/09/2020'
+    }, {
+      name: 'Lior Rabinovich',
+      image: 'https://material-ui.com/static/images/avatar/1.jpg',
+      lastMessage: 'Hello world...',
+      date: '12/09/2020'
+    }, {
+      name: 'Lior Rabinovich',
+      image: 'https://material-ui.com/static/images/avatar/1.jpg',
+      lastMessage: 'Hello world...',
+      date: '12/09/2020'
+    }, {
+      name: 'Lior Rabinovich',
+      image: 'https://material-ui.com/static/images/avatar/1.jpg',
+      lastMessage: 'Hello world...',
+      date: '12/09/2020'
+    }, {
+      name: 'Lior Rabinovich',
+      image: 'https://material-ui.com/static/images/avatar/1.jpg',
+      lastMessage: 'Hello world...',
+      date: '12/09/2020'
+    }, {
+      name: 'Lior Rabinovich',
+      image: 'https://material-ui.com/static/images/avatar/1.jpg',
+      lastMessage: 'Hello world...',
+      date: '12/09/2020'
+    }, {
+      name: 'Lior Rabinovich',
+      image: 'https://material-ui.com/static/images/avatar/1.jpg',
+      lastMessage: 'Hello world...',
+      date: '12/09/2020'
+    }, {
+      name: 'Lior Rabinovich',
+      image: 'https://material-ui.com/static/images/avatar/1.jpg',
+      lastMessage: 'Hello world...',
+      date: '12/09/2020'
+    }, {
+      name: 'Lior Rabinovich',
+      image: 'https://material-ui.com/static/images/avatar/1.jpg',
+      lastMessage: 'Hello world...',
+      date: '12/09/2020'
+    }, {
+      name: 'Lior Rabinovich',
+      image: 'https://material-ui.com/static/images/avatar/1.jpg',
+      lastMessage: 'Hello world...',
+      date: '12/09/2020'
+    }, {
+      name: 'Lior Rabinovich',
+      image: 'https://material-ui.com/static/images/avatar/1.jpg',
+      lastMessage: 'Hello world...',
+      date: '12/09/2020'
+    }, {
+      name: 'Lior Rabinovich',
+      image: 'https://material-ui.com/static/images/avatar/1.jpg',
+      lastMessage: 'Hello world...',
+      date: '12/09/2020'
+    }, {
+      name: 'Lior Rabinovich',
+      image: 'https://material-ui.com/static/images/avatar/1.jpg',
+      lastMessage: 'Hello world...',
+      date: '12/09/2020'
+    }])
+  }, [])
 
   return (
     <List className={classes.root}>
-      {firends.map((firend) => (
-        <ListItem button className={classes.listItem} alignItems="flex-start">
+      {firends.map((firend, friendIndex) => (
+        <ListItem key={friendIndex} button className={classes.listItem} alignItems="flex-start">
           <ListItemAvatar>
             <Avatar alt={firend.name} src={firend.image} />
           </ListItemAvatar>
           <ListItemText
-            className={classes.listItemText}
             primary={
               <div className={classes.listItemTitleHeader}>
                 <div>{firend.name}</div>
@@ -154,9 +157,9 @@ export default function FriendsList() {
               </div>
             }
             secondary={
-              <div className={classes.lastMessage}>
+              <span className={classes.lastMessage}>
                 {firend.lastMessage}
-              </div>
+              </span>
             }
           />
         </ListItem>

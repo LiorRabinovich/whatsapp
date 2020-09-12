@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Sidebar from './components/Sidebar';
-import Chat from './components/Chat';
+import AppMain from './components/AppMain';
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -30,7 +30,7 @@ function App() {
   return (
     <div className={classes.root}>
       <Sidebar />
-      <Chat />
+      <AppMain />
     </div>
   );
 }

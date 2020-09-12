@@ -13,8 +13,8 @@ export default function Chat() {
     const classes = useStyles();
 
     return (
-        <main className={classes.root}>
-            
-        </main>
+        <div className={classes.root}>
+            Chat
+        </div>
     )
 }
