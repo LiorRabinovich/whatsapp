@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { Link, useLocation } from 'react-router-dom';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -46,95 +47,24 @@ const useStyles = makeStyles((theme) => ({
 
 export default function FriendsList() {
   const classes = useStyles();
+  const location = useLocation();
   const [firends, setFriends] = useState([])
 
   useEffect(() => {
     setFriends([{
+      id: 1,
       name: 'Lior Rabinovich',
       image: 'https://material-ui.com/static/images/avatar/1.jpg',
       lastMessage: 'Hello world...',
       date: '12/09/2020'
     }, {
+      id: 2,
       name: 'Lior Rabinovich',
       image: 'https://material-ui.com/static/images/avatar/1.jpg',
       lastMessage: 'Hello world...',
       date: '12/09/2020'
     }, {
-      name: 'Lior Rabinovich',
-      image: 'https://material-ui.com/static/images/avatar/1.jpg',
-      lastMessage: 'Hello world...',
-      date: '12/09/2020'
-    }, {
-      name: 'Lior Rabinovich',
-      image: 'https://material-ui.com/static/images/avatar/1.jpg',
-      lastMessage: 'Hello world...',
-      date: '12/09/2020'
-    }, {
-      name: 'Lior Rabinovich',
-      image: 'https://material-ui.com/static/images/avatar/1.jpg',
-      lastMessage: 'Hello world...',
-      date: '12/09/2020'
-    }, {
-      name: 'Lior Rabinovich',
-      image: 'https://material-ui.com/static/images/avatar/1.jpg',
-      lastMessage: 'Hello world...',
-      date: '12/09/2020'
-    }, {
-      name: 'Lior Rabinovich',
-      image: 'https://material-ui.com/static/images/avatar/1.jpg',
-      lastMessage: 'Hello world...',
-      date: '12/09/2020'
-    }, {
-      name: 'Lior Rabinovich',
-      image: 'https://material-ui.com/static/images/avatar/1.jpg',
-      lastMessage: 'Hello world...',
-      date: '12/09/2020'
-    }, {
-      name: 'Lior Rabinovich',
-      image: 'https://material-ui.com/static/images/avatar/1.jpg',
-      lastMessage: 'Hello world...',
-      date: '12/09/2020'
-    }, {
-      name: 'Lior Rabinovich',
-      image: 'https://material-ui.com/static/images/avatar/1.jpg',
-      lastMessage: 'Hello world...',
-      date: '12/09/2020'
-    }, {
-      name: 'Lior Rabinovich',
-      image: 'https://material-ui.com/static/images/avatar/1.jpg',
-      lastMessage: 'Hello world...',
-      date: '12/09/2020'
-    }, {
-      name: 'Lior Rabinovich',
-      image: 'https://material-ui.com/static/images/avatar/1.jpg',
-      lastMessage: 'Hello world...',
-      date: '12/09/2020'
-    }, {
-      name: 'Lior Rabinovich',
-      image: 'https://material-ui.com/static/images/avatar/1.jpg',
-      lastMessage: 'Hello world...',
-      date: '12/09/2020'
-    }, {
-      name: 'Lior Rabinovich',
-      image: 'https://material-ui.com/static/images/avatar/1.jpg',
-      lastMessage: 'Hello world...',
-      date: '12/09/2020'
-    }, {
-      name: 'Lior Rabinovich',
-      image: 'https://material-ui.com/static/images/avatar/1.jpg',
-      lastMessage: 'Hello world...',
-      date: '12/09/2020'
-    }, {
-      name: 'Lior Rabinovich',
-      image: 'https://material-ui.com/static/images/avatar/1.jpg',
-      lastMessage: 'Hello world...',
-      date: '12/09/2020'
-    }, {
-      name: 'Lior Rabinovich',
-      image: 'https://material-ui.com/static/images/avatar/1.jpg',
-      lastMessage: 'Hello world...',
-      date: '12/09/2020'
-    }, {
+      id: 3,
       name: 'Lior Rabinovich',
       image: 'https://material-ui.com/static/images/avatar/1.jpg',
       lastMessage: 'Hello world...',
@@ -145,7 +75,15 @@ export default function FriendsList() {
   return (
     <List className={classes.root}>
       {firends.map((firend, friendIndex) => (
-        <ListItem key={friendIndex} button className={classes.listItem} alignItems="flex-start">
+        <ListItem
+          key={friendIndex}
+          button
+          disableRipple
+          component={Link}
+          to={`/room/${firend.id}`}
+          className={classes.listItem}
+          alignItems="flex-start"
+          selected={location.pathname === `/room/${firend.id}`}>
           <ListItemAvatar>
             <Avatar alt={firend.name} src={firend.image} />
           </ListItemAvatar>

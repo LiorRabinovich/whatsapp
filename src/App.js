@@ -1,7 +1,9 @@
 import React from 'react';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import Sidebar from './components/Sidebar';
-import AppMain from './components/AppMain';
+import Intro from './components/Intro';
+import Chat from './components/Chat';
 
 const useStyles = makeStyles((theme) => {
   return {
@@ -20,6 +22,11 @@ const useStyles = makeStyles((theme) => {
         width: '100%',
         height: '100%'
       }
+    },
+    main: {
+      flex: 1,
+      display: 'flex',
+      background: '#f8f9fa'
     }
   }
 });
@@ -28,10 +35,15 @@ function App() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <Sidebar />
-      <AppMain />
-    </div>
+    <Router>
+      <div className={classes.root}>
+        <Sidebar />
+        <main className={classes.main}>
+          <Route path="/" exact component={Intro} />
+          <Route path="/room/:roomId" component={Chat} />
+        </main>
+      </div>
+    </Router>
   );
 }
 

@@ -18,11 +18,8 @@ const useStyles = makeStyles((theme) => {
             padding: '0 15px'
         },
         icons: {
-            '& > svg': {
+            '& button': {
                 color: '#919191',
-                '&:not(:first-child)': {
-                    marginLeft: 10
-                }
             }
         }
     }
@@ -35,9 +32,9 @@ export default function SidebarHeader() {
         <header className={classes.root}>
             <Avatar src="https://material-ui.com/static/images/avatar/1.jpg" />
             <div className={classes.icons}>
-                <IconButton><DonutLargeIcon /></IconButton>
-                <IconButton><ChatIcon /></IconButton>
-                <IconButton><MoreVertIcon /></IconButton>
+                <IconButton><DonutLargeIcon fontSize="small" /></IconButton>
+                <IconButton><ChatIcon fontSize="small" /></IconButton>
+                <IconButton><MoreVertIcon fontSize="small" /></IconButton>
             </div>
         </header>
     )

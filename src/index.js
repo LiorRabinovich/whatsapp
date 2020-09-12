@@ -7,7 +7,11 @@ import App from './App';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#33b7f6'
+      main: '#33b7f6',
+    },
+    action: {
+      selected: '#ebebeb',
+      hover: '#f5f5f5'
     }
   },
   overrides: {
