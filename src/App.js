@@ -8,7 +8,6 @@ import Chat from './components/Chat';
 const useStyles = makeStyles((theme) => {
   return {
     root: {
-      background: theme.palette.common.white,
       width: 1200,
       height: 'calc(100% - 40px)',
       minHeight: 500,
@@ -26,7 +25,7 @@ const useStyles = makeStyles((theme) => {
     main: {
       flex: 1,
       display: 'flex',
-      background: '#f8f9fa'
+      backgroundColor: '#f8f9fa'
     }
   }
 });
