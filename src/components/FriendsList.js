@@ -13,14 +13,6 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
     overflowY: 'auto',
     padding: 0,
-
-    '&::-webkit-scrollbar': {
-      width: 7
-    },
-
-    '&::-webkit-scrollbar-thumb': {
-      background: '#ccc'
-    },
   },
   listItem: {
     position: 'relative',
@@ -69,6 +61,102 @@ export default function FriendsList() {
       image: 'https://material-ui.com/static/images/avatar/1.jpg',
       lastMessage: 'Hello world...',
       date: '12/09/2020'
+    }, {
+      id: 3,
+      name: 'Lior Rabinovich',
+      image: 'https://material-ui.com/static/images/avatar/1.jpg',
+      lastMessage: 'Hello world...',
+      date: '12/09/2020'
+    }, {
+      id: 3,
+      name: 'Lior Rabinovich',
+      image: 'https://material-ui.com/static/images/avatar/1.jpg',
+      lastMessage: 'Hello world...',
+      date: '12/09/2020'
+    }, {
+      id: 3,
+      name: 'Lior Rabinovich',
+      image: 'https://material-ui.com/static/images/avatar/1.jpg',
+      lastMessage: 'Hello world...',
+      date: '12/09/2020'
+    }, {
+      id: 3,
+      name: 'Lior Rabinovich',
+      image: 'https://material-ui.com/static/images/avatar/1.jpg',
+      lastMessage: 'Hello world...',
+      date: '12/09/2020'
+    }, {
+      id: 3,
+      name: 'Lior Rabinovich',
+      image: 'https://material-ui.com/static/images/avatar/1.jpg',
+      lastMessage: 'Hello world...',
+      date: '12/09/2020'
+    }, {
+      id: 3,
+      name: 'Lior Rabinovich',
+      image: 'https://material-ui.com/static/images/avatar/1.jpg',
+      lastMessage: 'Hello world...',
+      date: '12/09/2020'
+    }, {
+      id: 3,
+      name: 'Lior Rabinovich',
+      image: 'https://material-ui.com/static/images/avatar/1.jpg',
+      lastMessage: 'Hello world...',
+      date: '12/09/2020'
+    }, {
+      id: 3,
+      name: 'Lior Rabinovich',
+      image: 'https://material-ui.com/static/images/avatar/1.jpg',
+      lastMessage: 'Hello world...',
+      date: '12/09/2020'
+    }, {
+      id: 3,
+      name: 'Lior Rabinovich',
+      image: 'https://material-ui.com/static/images/avatar/1.jpg',
+      lastMessage: 'Hello world...',
+      date: '12/09/2020'
+    }, {
+      id: 3,
+      name: 'Lior Rabinovich',
+      image: 'https://material-ui.com/static/images/avatar/1.jpg',
+      lastMessage: 'Hello world...',
+      date: '12/09/2020'
+    }, {
+      id: 3,
+      name: 'Lior Rabinovich',
+      image: 'https://material-ui.com/static/images/avatar/1.jpg',
+      lastMessage: 'Hello world...',
+      date: '12/09/2020'
+    }, {
+      id: 3,
+      name: 'Lior Rabinovich',
+      image: 'https://material-ui.com/static/images/avatar/1.jpg',
+      lastMessage: 'Hello world...',
+      date: '12/09/2020'
+    }, {
+      id: 3,
+      name: 'Lior Rabinovich',
+      image: 'https://material-ui.com/static/images/avatar/1.jpg',
+      lastMessage: 'Hello world...',
+      date: '12/09/2020'
+    }, {
+      id: 3,
+      name: 'Lior Rabinovich',
+      image: 'https://material-ui.com/static/images/avatar/1.jpg',
+      lastMessage: 'Hello world...',
+      date: '12/09/2020'
+    }, {
+      id: 3,
+      name: 'Lior Rabinovich',
+      image: 'https://material-ui.com/static/images/avatar/1.jpg',
+      lastMessage: 'Hello world...',
+      date: '12/09/2020'
+    }, {
+      id: 3,
+      name: 'Lior Rabinovich',
+      image: 'https://material-ui.com/static/images/avatar/1.jpg',
+      lastMessage: 'Hello world...',
+      date: '12/09/2020'
     }])
   }, [])
 
@@ -80,10 +168,10 @@ export default function FriendsList() {
           button
           disableRipple
           component={Link}
-          to={`/room/${firend.id}`}
+          to={`/chat/${firend.id}`}
           className={classes.listItem}
           alignItems="flex-start"
-          selected={location.pathname === `/room/${firend.id}`}>
+          selected={location.pathname === `/chat/${firend.id}`}>
           <ListItemAvatar>
             <Avatar alt={firend.name} src={firend.image} />
           </ListItemAvatar>

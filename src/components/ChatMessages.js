@@ -1,18 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Message from './Message'
-import zIndex from '@material-ui/core/styles/zIndex';
+import ChatMessage from './ChatMessage'
 
 const useStyles = makeStyles((theme) => {
     return {
         root: {
+            display: 'flex',
             flex: 1,
             backgroundColor: '#e5ddd5',
             position: 'relative',
-            margin: 0,
-            padding: `${theme.spacing(2.5)}px 7%`,
-            display: 'flex',
-            flexDirection: 'column',
+            overflow: 'hidden',
 
             '&::after': {
                 content: '" "',
@@ -24,18 +21,69 @@ const useStyles = makeStyles((theme) => {
                 opacity: 0.06,
                 backgroundImage: 'url("https://web.whatsapp.com/img/bg-chat-tile-light_686b98c9fdffef3f63127759e2057750.png")'
             }
+        },
+        list: {
+            display: 'flex',
+            margin: 0,
+            flexDirection: 'column',
+            overflowY: 'auto',
+            width: '100%',
+            padding: `${theme.spacing(2.5)}px 7%`,
+            position: 'relative',
+            zIndex: 1
         }
     }
 });
 
 export default function ChatMessages() {
     const classes = useStyles();
+    const [messages, setMessages] = useState([]);
+
+    useEffect(() => {
+        setMessages([{
+            content: 'Hello world',
+            me: true
+        }, {
+            content: 'Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world ',
+            me: false
+        }, {
+            content: 'Hello world',
+            me: true
+        }, {
+            content: 'Hello world',
+            me: false
+        }, {
+            content: 'Hello world',
+            me: false
+        }, {
+            content: 'Hello world',
+            me: true
+        }, {
+            content: 'Hello world',
+            me: true
+        }, {
+            content: 'Hello world',
+            me: true
+        }, {
+            content: 'Hello world',
+            me: true
+        }, {
+            content: 'Hello world',
+            me: true
+        }, {
+            content: 'Hello world',
+            me: true
+        }, {
+            content: 'Hello world',
+            me: true
+        }])
+    }, [])
 
     return (
-        <ul className={classes.root}>
-            <Message content="test test test" />
-            <Message content="test test test 2" me />
-            <Message content="test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2test test test 2" me />
-        </ul>
+        <section className={classes.root}>
+            <ul className={classes.list}>
+                {messages.map((message) => <ChatMessage content={message.content} me={message.me} />)}
+            </ul>
+        </section>
     )
 }

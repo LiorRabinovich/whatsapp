@@ -39,7 +39,7 @@ function App() {
         <Sidebar />
         <main className={classes.main}>
           <Route path="/" exact component={Intro} />
-          <Route path="/room/:roomId" component={Chat} />
+          <Route path="/chat/:chatId" component={Chat} />
         </main>
       </div>
     </Router>

@@ -11,7 +11,6 @@ const useStyles = makeStyles((theme) => {
             padding: theme.spacing(1),
             borderRadius: `0 ${theme.spacing(1)}px ${theme.spacing(1)}px ${theme.spacing(1)}px`,
             background: theme.palette.common.white,
-            zIndex: 1,
             position: 'relative',
             marginBottom: theme.spacing(2.5),
             width: 'fit-content',
@@ -62,7 +61,7 @@ function ViewMessageIcon({ received, ...rest }) {
     return <CheckIcon {...rest} />;
 }
 
-export default function Message({ me, content }) {
+export default function ChatMessage({ me, content }) {
     const classes = useStyles();
 
     return (

@@ -21,6 +21,13 @@ const theme = createMuiTheme({
           width: '100%',
           height: '100%'
         },
+        '*::-webkit-scrollbar': {
+          width: 7
+        },
+    
+        '*::-webkit-scrollbar-thumb': {
+          background: 'rgba(0,0,0,.2)'
+        },
         '#root': {
           background: 'linear-gradient(180deg, #dddbd1, #d2dbdc)',
           width: '100%',
