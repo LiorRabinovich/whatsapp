@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => {
             width: 'calc(100% - 20px)',
             height: 'calc(100% - 15px)',
             paddingLeft: '60px',
-            borderRadius: 18,
+            borderRadius: theme.spacing(2),
             transition: 'all 0.1s',
         },
         inputFocus: {

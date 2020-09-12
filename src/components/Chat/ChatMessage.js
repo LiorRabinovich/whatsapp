@@ -34,6 +34,10 @@ const useStyles = makeStyles((theme) => {
             '& time, & svg': {
                 color: 'rgba(0,0,0,.4)',
                 fontSize: 11
+            },
+
+            '&:last-child': {
+                marginBottom: 0
             }
         },
         me: {

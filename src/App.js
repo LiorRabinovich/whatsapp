@@ -8,7 +8,7 @@ import Chat from './routes/Chat';
 const useStyles = makeStyles((theme) => {
   return {
     root: {
-      width: 1200,
+      width: 1260,
       height: 'calc(100% - 40px)',
       minHeight: 500,
       position: 'absolute',
