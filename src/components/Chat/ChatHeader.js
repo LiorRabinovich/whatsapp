@@ -4,7 +4,7 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton'
 import SearchIcon from '@material-ui/icons/Search';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import Navbar from './Navbar';
+import Navbar from '../Navbar';
 
 const useStyles = makeStyles((theme) => {
     return {

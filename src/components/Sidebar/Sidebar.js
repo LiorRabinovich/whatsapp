@@ -1,8 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import SidebarHeader from './SidebarHeader'
-import Search from './Search'
-import FriendsList from './FriendsList'
+import SidebarSearch from './SidebarSearch'
+import SidebarFriends from './SidebarFriends'
 
 const useStyles = makeStyles((theme) => {
     return {
@@ -22,8 +22,8 @@ export default function Sidebar() {
     return (
         <aside className={classes.root}>
             <SidebarHeader />
-            <Search />
-            <FriendsList />
+            <SidebarSearch />
+            <SidebarFriends />
         </aside>
     )
 }

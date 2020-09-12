@@ -7,7 +7,7 @@ import DonutLargeIcon from '@material-ui/icons/DonutLarge';
 import ChatIcon from '@material-ui/icons/Chat';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
-import Navbar from './Navbar'
+import Navbar from '../Navbar'
 
 const useStyles = makeStyles((theme) => {
     return {

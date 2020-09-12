@@ -1,9 +1,9 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { useParams } from 'react-router-dom';
-import ChatHeader from './ChatHeader';
-import ChatMessages from './ChatMessages'
-import ChatForm from './ChatForm'
+import ChatHeader from '../components/Chat/ChatHeader';
+import ChatMessages from '../components/Chat/ChatMessages'
+import ChatForm from '../components/Chat/ChatForm'
 
 const useStyles = makeStyles((theme) => {
     return {

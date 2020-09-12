@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
-import Sidebar from './components/Sidebar';
-import Intro from './components/Intro';
-import Chat from './components/Chat';
+import Sidebar from './components/Sidebar/Sidebar';
+import Intro from './routes/Intro';
+import Chat from './routes/Chat';
 
 const useStyles = makeStyles((theme) => {
   return {
