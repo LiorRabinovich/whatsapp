@@ -46,8 +46,10 @@ export default function SidebarChats() {
 
   useEffect(() => {
     db.collection('chats').onSnapshot((snapshot) => {
-      console.log({ snapshot });
-      setFriends(snapshot.docs.map(doc => doc.data()));
+      console.log({ snapshot: snapshot });
+      setFriends(snapshot.docs.map(doc => {
+        return { id: doc.id, ...doc.data() }
+      }));
     })
   }, [])
 
@@ -66,13 +68,13 @@ export default function SidebarChats() {
           alignItems="flex-start"
           selected={location.pathname === `/chat/${firend.id}`}>
           <ListItemAvatar>
-            <Avatar alt={firend.title} src={firend.image} />
+            <Avatar alt={firend.title} src={firend.avatar} />
           </ListItemAvatar>
           <ListItemText
             primary={
               <div className={classes.listItemTitleHeader}>
                 <div>{firend.title}</div>
-                <div className={classes.date}>{moment(firend.timestamp.toDate()).format()}</div>
+                <div className={classes.date}>{moment(firend.lastMessageTimestamp.toDate()).fromNow()}</div>
               </div>
             }
             secondary={
