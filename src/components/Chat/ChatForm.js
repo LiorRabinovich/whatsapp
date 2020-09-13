@@ -6,6 +6,8 @@ import AttachFileIcon from '@material-ui/icons/AttachFile';
 import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
 import MicIcon from '@material-ui/icons/Mic';
 
+import { db } from '../../firebase';
+
 const useStyles = makeStyles((theme) => {
     return {
         root: {
@@ -40,7 +42,9 @@ export default function ChatForm({ title }) {
     function handleKeyDown(e) {
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
-            alert('Send Message');
+            db.collection('messages').add({
+                content: message
+            })
             setMessage('')
         }
     }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ChatMessage from './ChatMessage'
+import { db } from '../../firebase';
 
 const useStyles = makeStyles((theme) => {
     return {
@@ -40,43 +41,9 @@ export default function ChatMessages() {
     const [messages, setMessages] = useState([]);
 
     useEffect(() => {
-        setMessages([{
-            content: 'Hello world',
-            me: true
-        }, {
-            content: 'Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world Hello world ',
-            me: false
-        }, {
-            content: 'Hello world',
-            me: true
-        }, {
-            content: 'Hello world',
-            me: false
-        }, {
-            content: 'Hello world',
-            me: false
-        }, {
-            content: 'Hello world',
-            me: true
-        }, {
-            content: 'Hello world',
-            me: true
-        }, {
-            content: 'Hello world',
-            me: true
-        }, {
-            content: 'Hello world',
-            me: true
-        }, {
-            content: 'Hello world',
-            me: true
-        }, {
-            content: 'Hello world',
-            me: true
-        }, {
-            content: 'Hello world',
-            me: true
-        }])
+        // db.collection('chats').doc().onSnapshot((snapshot) => {
+        //     setMessages(snapshot.docs.map(doc => doc.data()));
+        // })
     }, [])
 
     return (

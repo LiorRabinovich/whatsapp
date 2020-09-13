@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import { Link, useLocation } from 'react-router-dom';
+import moment from 'moment';
+import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
+import { db } from '../../firebase'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,32 +39,19 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function FriendsList() {
+export default function SidebarChats() {
   const classes = useStyles();
   const location = useLocation();
   const [firends, setFriends] = useState([])
 
   useEffect(() => {
-    setFriends([{
-      id: 1,
-      name: 'Lior Rabinovich',
-      image: 'https://material-ui.com/static/images/avatar/1.jpg',
-      lastMessage: 'Hello world...',
-      date: '12/09/2020'
-    }, {
-      id: 2,
-      name: 'Lior Rabinovich',
-      image: 'https://material-ui.com/static/images/avatar/1.jpg',
-      lastMessage: 'Hello world...',
-      date: '12/09/2020'
-    }, {
-      id: 3,
-      name: 'Lior Rabinovich',
-      image: 'https://material-ui.com/static/images/avatar/1.jpg',
-      lastMessage: 'Hello world...',
-      date: '12/09/2020'
-    }])
+    db.collection('chats').onSnapshot((snapshot) => {
+      console.log({ snapshot });
+      setFriends(snapshot.docs.map(doc => doc.data()));
+    })
   }, [])
+
+  console.log({ firends })
 
   return (
     <List className={classes.root}>
@@ -77,13 +66,13 @@ export default function FriendsList() {
           alignItems="flex-start"
           selected={location.pathname === `/chat/${firend.id}`}>
           <ListItemAvatar>
-            <Avatar alt={firend.name} src={firend.image} />
+            <Avatar alt={firend.title} src={firend.image} />
           </ListItemAvatar>
           <ListItemText
             primary={
               <div className={classes.listItemTitleHeader}>
-                <div>{firend.name}</div>
-                <div className={classes.date}>12/09/2020</div>
+                <div>{firend.title}</div>
+                <div className={classes.date}>{moment(firend.timestamp.toDate()).format()}</div>
               </div>
             }
             secondary={
