@@ -1,5 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
+import moment from 'moment';
 import { makeStyles } from '@material-ui/core/styles';
 import CheckIcon from '@material-ui/icons/Check';
 import DoneAllIcon from '@material-ui/icons/DoneAll';
@@ -65,14 +66,15 @@ function ViewMessageIcon({ received, ...rest }) {
     return <CheckIcon {...rest} />;
 }
 
-export default function ChatMessage({ me, content }) {
+export default function ChatMessage({ message }) {
     const classes = useStyles();
+    const { me = true, content, timestamp } = message;
 
     return (
         <li className={clsx(classes.root, (me ? classes.me : ''))}>
             <p>{content}</p>
             <footer>
-                <time datetime="">14:12</time>
+                <time dateTime={timestamp}>{moment(timestamp.toDate()).fromNow()}</time>
                 {me ? <ViewMessageIcon received={false} /> : ''}
             </footer>
         </li>

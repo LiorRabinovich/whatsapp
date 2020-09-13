@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton'
 import SearchIcon from '@material-ui/icons/Search';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Navbar from '../Navbar';
+import { db } from '../../firebase';
 
 const useStyles = makeStyles((theme) => {
     return {
@@ -30,8 +31,18 @@ const useStyles = makeStyles((theme) => {
     }
 });
 
-export default function ChatHeader({ title }) {
+export default function ChatHeader({ chatId }) {
     const classes = useStyles();
+    const [title, setTitle] = useState('')
+
+    useEffect(() => {
+        db.collection('chats')
+            .doc(chatId)
+            .get()
+            .then((doc) => {
+                setTitle(doc.data().title);
+            })
+    }, [chatId])
 
     return (
         <Navbar>

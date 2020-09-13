@@ -46,7 +46,6 @@ export default function SidebarChats() {
 
   useEffect(() => {
     db.collection('chats').onSnapshot((snapshot) => {
-      console.log({ snapshot: snapshot });
       setFriends(snapshot.docs.map(doc => {
         return { id: doc.id, ...doc.data() }
       }));

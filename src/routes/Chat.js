@@ -21,9 +21,9 @@ export default function Chat() {
 
     return (
         <div className={classes.root}>
-            <ChatHeader title={chatId} />
-            <ChatMessages />
-            <ChatForm />
+            <ChatHeader title={chatId} chatId={chatId} />
+            <ChatMessages chatId={chatId} />
+            <ChatForm chatId={chatId} />
         </div>
     )
 }

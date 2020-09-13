@@ -35,14 +35,19 @@ const useStyles = makeStyles((theme) => {
     }
 });
 
-export default function ChatForm({ title }) {
+export default function ChatForm({ title, chatId }) {
     const classes = useStyles();
     const [message, setMessage] = useState('')
 
     function handleKeyDown(e) {
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
-            db.collection('messages').add({
+            db.collection('chats').doc(chatId).set({
+                lastMessageTimestamp: new Date(),
+                lastMessage: message
+            }, { merge: true })
+            db.collection('chats').doc(chatId).collection('messages').add({
+                timestamp: new Date(),
                 content: message
             })
             setMessage('')
