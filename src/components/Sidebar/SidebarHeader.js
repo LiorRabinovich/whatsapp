@@ -5,9 +5,10 @@ import IconButton from '@material-ui/core/IconButton';
 
 import DonutLargeIcon from '@material-ui/icons/DonutLarge';
 import ChatIcon from '@material-ui/icons/Chat';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 import Navbar from '../Navbar'
+import SettingsButton from '../SettingsButton'
+import { auth } from '../../firebase';
 
 const useStyles = makeStyles((theme) => {
     return {
@@ -28,7 +29,7 @@ export default function SidebarHeader() {
             <div className={classes.icons}>
                 <IconButton><DonutLargeIcon fontSize="small" /></IconButton>
                 <IconButton><ChatIcon fontSize="small" /></IconButton>
-                <IconButton><MoreVertIcon fontSize="small" /></IconButton>
+                <SettingsButton logout={() => auth.signOut()} />
             </div>
         </Navbar>
     )
