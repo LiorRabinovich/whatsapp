@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import clsx from 'clsx';
 import moment from 'moment';
 import { makeStyles } from '@material-ui/core/styles';
@@ -29,16 +29,36 @@ const useStyles = makeStyles((theme) => {
             },
 
             '& svg': {
-                marginLeft: theme.spacing(0.5)
+                marginLeft: theme.spacing(0.5),
+                fontSize: 14
             },
 
             '& time, & svg': {
                 color: 'rgba(0,0,0,.4)',
+            },
+
+            '& time': {
                 fontSize: 11
+            },
+
+            '& .received': {
+                color: '#4fc3f7'
             },
 
             '&:last-child': {
                 marginBottom: 0
+            },
+
+            '&::before': {
+                content: '" "',
+                position: 'absolute',
+                width: 0,
+                height: 0,
+                borderTop: `${theme.spacing(1.5)}px solid #fff`,
+                borderLeft: `${theme.spacing(1.5)}px solid transparent`,
+                borderRight: `${theme.spacing(1.5)}px solid transparent`,
+                top: 0,
+                left: `-${theme.spacing(1.5)}px`,
             }
         },
         me: {
@@ -47,36 +67,41 @@ const useStyles = makeStyles((theme) => {
             alignSelf: 'flex-end',
 
             '&::before': {
-                content: '" "',
-                position: 'absolute',
-                width: 0,
-                height: 0,
-                borderTop: `${theme.spacing(1.5)}px solid #dcf8c6`,
-                borderLeft: `${theme.spacing(1.5)}px solid transparent`,
-                borderRight: `${theme.spacing(1.5)}px solid transparent`,
-                top: 0,
+                borderTopColor: `#dcf8c6`,
+                left: 'auto',
                 right: `-${theme.spacing(1.5)}px`,
             }
         }
     }
 });
 
-function ViewMessageIcon({ received, ...rest }) {
-    if (received) return <DoneAllIcon {...rest} />
-    return <CheckIcon {...rest} />;
+function ViewMessageIcon({ received }) {
+    if (received) return <DoneAllIcon className={'received'} />
+    return <CheckIcon />;
 }
 
-export default function ChatMessage({ message }) {
+function ChatMessage({ uid, message, updateRead }) {
     const classes = useStyles();
-    const { me = true, content, timestamp } = message;
+    const { id, content, timestamp, username, read } = message;
+    const me = message.uid === uid;
+
+    useEffect(() => {
+        if (!me && !read) {
+            debugger;
+            updateRead(id);
+        }
+    }, [message, read])
 
     return (
         <li className={clsx(classes.root, (me ? classes.me : ''))}>
+            {!me ? <div style={{ color: '#029d00' }}>{username}</div> : ''}
             <p>{content}</p>
             <footer>
                 <time dateTime={timestamp}>{moment(timestamp.toDate()).fromNow()}</time>
-                {me ? <ViewMessageIcon received={false} /> : ''}
+                {me ? <ViewMessageIcon classNameReceived={classes.received} received={read} /> : ''}
             </footer>
-        </li>
+        </li >
     )
 }
+
+export default React.memo(ChatMessage);

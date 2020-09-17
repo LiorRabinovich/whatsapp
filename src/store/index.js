@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useReducer } from 'react';
-import { auth, googleProvider } from '../firebase'
+import { auth } from '../firebase'
 
 const initialState = {
     user: JSON.parse(window.localStorage.getItem('user'))

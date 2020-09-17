@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => {
     }
 });
 
-export default function ChatMessages({ messages }) {
+export default function ChatMessages({ uid, messages, updateRead }) {
     const classes = useStyles();
     const listRef = useRef(null);
 
@@ -46,7 +46,7 @@ export default function ChatMessages({ messages }) {
     return (
         <section className={classes.root}>
             <ul ref={listRef} className={classes.list}>
-                {messages.map((message, messageIndex) => <ChatMessage key={messageIndex} message={message} />)}
+                {messages.map((message, messageIndex) => <ChatMessage key={messageIndex} updateRead={updateRead} uid={uid} message={message} />)}
             </ul>
         </section>
     )
