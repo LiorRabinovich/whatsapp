@@ -1,47 +1,18 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { makeStyles } from '@material-ui/core/styles';
-import Sidebar from './components/Sidebar/Sidebar';
 import Intro from './routes/Intro';
 import Chat from './routes/Chat';
-
-const useStyles = makeStyles((theme) => {
-  return {
-    root: {
-      width: 1260,
-      height: 'calc(100% - 40px)',
-      minHeight: 500,
-      position: 'absolute',
-      top: '50%',
-      left: '50%',
-      transform: 'translateY(-50%) translateX(-50%)',
-      display: 'flex',
-
-      [theme.breakpoints.down('md')]: {
-        width: '100%',
-        height: '100%'
-      }
-    },
-    main: {
-      flex: 1,
-      display: 'flex',
-      backgroundColor: '#f8f9fa'
-    }
-  }
-});
+import Login from './routes/Login';
+import AuthRoute from './components/AuthRoute'
+import GuestRoute from './components/GuestRoute'
 
 function App() {
-  const classes = useStyles();
-
   return (
     <Router>
-      <div className={classes.root}>
-        <Sidebar />
-        <main className={classes.main}>
-          <Route path="/" exact component={Intro} />
-          <Route path="/chat/:chatId" component={Chat} />
-        </main>
-      </div>
+      <AuthRoute path="/" exact component={Intro} />
+      <GuestRoute path="/login" component={Login} />
+      <AuthRoute path="/chat/:chatId" component={Chat} />
+      <Route render={() => "Not Found"} />
     </Router>
   );
 }

@@ -6,8 +6,6 @@ import AttachFileIcon from '@material-ui/icons/AttachFile';
 import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon';
 import MicIcon from '@material-ui/icons/Mic';
 
-import { db } from '../../firebase';
-
 const useStyles = makeStyles((theme) => {
     return {
         root: {
@@ -35,21 +33,14 @@ const useStyles = makeStyles((theme) => {
     }
 });
 
-export default function ChatForm({ title, chatId }) {
+export default function ChatForm({ createMessage }) {
     const classes = useStyles();
     const [message, setMessage] = useState('')
 
     function handleKeyDown(e) {
-        if (e.key === 'Enter' && !e.shiftKey) {
+        if (e.key === 'Enter' && !e.shiftKey && message.trim() !== '') {
             e.preventDefault();
-            db.collection('chats').doc(chatId).set({
-                lastMessageTimestamp: new Date(),
-                lastMessage: message
-            }, { merge: true })
-            db.collection('chats').doc(chatId).collection('messages').add({
-                timestamp: new Date(),
-                content: message
-            })
+            createMessage(message);
             setMessage('')
         }
     }

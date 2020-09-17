@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ComputerIcon from '@material-ui/icons/Computer';
+import DefaultLayout from '../layouts/DefaultLayout'
 
 const useStyles = makeStyles((theme) => {
     return {
@@ -47,15 +48,17 @@ export default function Intro() {
     const classes = useStyles();
 
     return (
-        <div className={classes.root}>
-            <img alt="intro" src="https://web.whatsapp.com/img/intro-connection-light_c98cc75f2aa905314d74375a975d2cf2.jpg" />
-            <h1 className={classes.h1}>Keep your phone connected</h1>
-            <p className={classes.subtitle}>WhatsApp connects to your phone to sync messages. To reduce data usage, connect your phone to Wi-Fi.</p>
-            <p className={classes.footer}>
-                <ComputerIcon />
-                <span>WhatsApp is availasble for Windows.</span>
-                <a href="https://www.whatsapp.com/download">Get it here</a>
-            </p>
-        </div>
+        <DefaultLayout>
+            <div className={classes.root}>
+                <img alt="intro" src="https://web.whatsapp.com/img/intro-connection-light_c98cc75f2aa905314d74375a975d2cf2.jpg" />
+                <h1 className={classes.h1}>Keep your phone connected</h1>
+                <p className={classes.subtitle}>WhatsApp connects to your phone to sync messages. To reduce data usage, connect your phone to Wi-Fi.</p>
+                <p className={classes.footer}>
+                    <ComputerIcon />
+                    <span>WhatsApp is availasble for Windows.</span>
+                    <a href="https://www.whatsapp.com/download">Get it here</a>
+                </p>
+            </div>
+        </DefaultLayout>
     )
 }

@@ -1,7 +1,6 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ChatMessage from './ChatMessage'
-import { db } from '../../firebase';
 
 const useStyles = makeStyles((theme) => {
     return {
@@ -36,21 +35,13 @@ const useStyles = makeStyles((theme) => {
     }
 });
 
-export default function ChatMessages({ chatId }) {
+export default function ChatMessages({ messages }) {
     const classes = useStyles();
-    const [messages, setMessages] = useState([]);
     const listRef = useRef(null);
 
     useEffect(() => {
-        db.collection('chats')
-            .doc(chatId)
-            .collection('messages')
-            .orderBy('timestamp')
-            .onSnapshot((snapshot) => {
-                setMessages(snapshot.docs.map(doc => doc.data()));
-                listRef.current.scrollTop = listRef.current.scrollHeight;
-            })
-    }, [chatId])
+        listRef.current.scrollTop = listRef.current.scrollHeight;
+    }, [messages, listRef])
 
     return (
         <section className={classes.root}>

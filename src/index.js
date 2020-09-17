@@ -3,11 +3,16 @@ import ReactDOM from 'react-dom';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import App from './App';
+import { StateProvider } from './store'
 
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#33b7f6',
+      main: '#33b7f6'
+    },
+    secondary: {
+      main: '#07bc4c',
+      contrastText: '#fff'
     },
     action: {
       selected: '#ebebeb',
@@ -21,28 +26,13 @@ const theme = createMuiTheme({
           width: '100%',
           height: '100%'
         },
+
         '*::-webkit-scrollbar': {
           width: 7
         },
-    
+
         '*::-webkit-scrollbar-thumb': {
           background: 'rgba(0,0,0,.2)'
-        },
-        '#root': {
-          background: 'linear-gradient(180deg, #dddbd1, #d2dbdc)',
-          width: '100%',
-          height: '100%',
-
-          '&::before': {
-            background: '#009688',
-            height: 130,
-            width: '100%',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            content: '""',
-            display: 'block'
-          }
         }
       },
     },
@@ -53,7 +43,9 @@ ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <App />
+      <StateProvider>
+        <App />
+      </StateProvider>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
