@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Intro from './routes/Intro';
 import Chat from './routes/Chat';
 import Login from './routes/Login';
@@ -12,6 +12,7 @@ function App() {
       <AuthRoute path="/" exact component={Intro} />
       <GuestRoute path="/login" component={Login} />
       <AuthRoute path="/chat/:chatId" component={Chat} />
+      <Route component={NotFound} />
     </Router>
   );
 }
