@@ -46,7 +46,7 @@ export default function ChatMessages({ uid, messages, updateRead }) {
     return (
         <section className={classes.root}>
             <ul ref={listRef} className={classes.list}>
-                {messages.map((message, messageIndex) => <ChatMessage key={messageIndex} updateRead={updateRead} uid={uid} message={message} />)}
+                {messages.map((message) => <ChatMessage key={message.id} updateRead={updateRead} uid={uid} message={message} />)}
             </ul>
         </section>
     )

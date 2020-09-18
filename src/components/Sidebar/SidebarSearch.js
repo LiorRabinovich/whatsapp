@@ -46,7 +46,7 @@ function SearchIconComponent({ isFocus, ...rest }) {
     return <SearchIcon {...rest} />;
 }
 
-export default function Search() {
+export default function Search({ searchChat }) {
     const classes = useStyles();
     const [isFocus, setIsFocus] = useState(false);
 
@@ -56,6 +56,7 @@ export default function Search() {
                 <SearchIconComponent isFocus={isFocus} fontSize="small" />
             </IconButton>
             <input
+                onChange={searchChat}
                 onFocus={() => setIsFocus(true)}
                 onBlur={() => setIsFocus(false)}
                 className={clsx(classes.input, (isFocus ? classes.inputFocus : ''))}

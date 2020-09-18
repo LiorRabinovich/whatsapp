@@ -82,22 +82,21 @@ function ViewMessageIcon({ received }) {
 
 function ChatMessage({ uid, message, updateRead }) {
     const classes = useStyles();
-    const { id, content, timestamp, username, read } = message;
+    const { content, createdAt, displayName, read } = message;
     const me = message.uid === uid;
 
     useEffect(() => {
-        if (!me && !read) {
-            debugger;
-            updateRead(id);
+        if (!me && !message.read) {
+            updateRead(message.id);
         }
-    }, [message, read])
+    }, [me, message, updateRead])
 
     return (
         <li className={clsx(classes.root, (me ? classes.me : ''))}>
-            {!me ? <div style={{ color: '#029d00' }}>{username}</div> : ''}
+            {!me ? <div style={{ color: '#029d00' }}>{displayName}</div> : ''}
             <p>{content}</p>
             <footer>
-                <time dateTime={timestamp}>{moment(timestamp.toDate()).fromNow()}</time>
+                <time dateTime={createdAt}>{moment(createdAt.toDate()).fromNow()}</time>
                 {me ? <ViewMessageIcon classNameReceived={classes.received} received={read} /> : ''}
             </footer>
         </li >

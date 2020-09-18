@@ -30,14 +30,14 @@ const useStyles = makeStyles((theme) => {
     }
 });
 
-export default function ChatHeader({ title }) {
+export default function ChatHeader({ chatInfo }) {
     const classes = useStyles();
 
     return (
         <Navbar>
             <div className={classes.avatarContainer}>
-                <Avatar className={classes.avatar} alt="Lior Rabinovich" src="https://material-ui.com/static/images/avatar/1.jpg" />
-                <h1 className={classes.h1}>{title}</h1>
+                <Avatar className={classes.avatar} alt="Lior Rabinovich" src={chatInfo.avatar} />
+                <h1 className={classes.h1}>{chatInfo.title}</h1>
             </div>
             <div className={classes.icons}>
                 <IconButton><SearchIcon fontSize="small" /></IconButton>

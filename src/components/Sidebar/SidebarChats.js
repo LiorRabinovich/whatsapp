@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import moment from 'moment';
 import { makeStyles } from '@material-ui/core/styles';
@@ -7,7 +7,6 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
-import { db } from '../../firebase'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,46 +38,36 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function SidebarChats() {
+export default function SidebarChats({ allChats, searchResultsChats }) {
   const classes = useStyles();
   const location = useLocation();
-  const [firends, setFriends] = useState([])
-
-  useEffect(() => {
-    db.collection('chats').onSnapshot((snapshot) => {
-      setFriends(snapshot.docs.map(doc => {
-        return { id: doc.id, ...doc.data() }
-      }));
-    })
-  }, [])
-
-  console.log({ firends })
+  const chats = searchResultsChats ? searchResultsChats : allChats;
 
   return (
     <List className={classes.root}>
-      {firends.map((firend, friendIndex) => (
+      {chats.map((chat) => (
         <ListItem
-          key={friendIndex}
+          key={chat.id}
           button
           disableRipple
           component={Link}
-          to={`/chat/${firend.id}`}
+          to={`/chat/${chat.id}`}
           className={classes.listItem}
           alignItems="flex-start"
-          selected={location.pathname === `/chat/${firend.id}`}>
+          selected={location.pathname === `/chat/${chat.id}`}>
           <ListItemAvatar>
-            <Avatar alt={firend.title} src={firend.avatar} />
+            <Avatar alt={chat.title} src={chat.avatar} />
           </ListItemAvatar>
           <ListItemText
             primary={
               <div className={classes.listItemTitleHeader}>
-                <div>{firend.title}</div>
-                <div className={classes.date}>{moment(firend.lastMessageTimestamp.toDate()).fromNow()}</div>
+                <div>{chat.title}</div>
+                {chat.lastMessageCreatedAt ? <div className={classes.date}>{moment(chat.lastMessageCreatedAt.toDate()).fromNow()}</div> : ''}
               </div>
             }
             secondary={
               <span className={classes.lastMessage}>
-                {firend.lastMessage}
+                {chat.lastMessage}
               </span>
             }
           />
