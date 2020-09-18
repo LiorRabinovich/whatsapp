@@ -23,13 +23,17 @@ export default function Sidebar() {
     const [searchResultsChats, setSearchResultsChats] = useState(null)
 
     useEffect(() => {
-        db.collection('chats')
+        const unsubscribe = db.collection('chats')
             .orderBy('lastMessageCreatedAt', 'desc')
             .onSnapshot((snapshot) => {
                 setAllChats(snapshot.docs.map(doc => {
                     return { id: doc.id, ...doc.data() }
                 }));
             })
+
+        return () => {
+            unsubscribe();
+        }
     }, [])
 
     function searchChat(e) {
