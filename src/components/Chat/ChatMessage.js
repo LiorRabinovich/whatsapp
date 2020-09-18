@@ -79,7 +79,7 @@ const useStyles = makeStyles((theme) => {
 });
 
 const colorsByUsers = {};
-const allColors = ['#029d00', '#8393ca', '#fd85d4'];
+const allColors = ['#029d00', '#8393ca', '#fd85d4', '#b04632', '#59d368', '#ba33dc', '#fe7c7f', '#029d00'];
 
 function createColor(messageUid) {
     if (colorsByUsers[messageUid]) {
