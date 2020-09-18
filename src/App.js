@@ -11,7 +11,7 @@ function App() {
   return (
     <Router>
       <Switch>
-        <AuthRoute path="/" component={Intro} />
+        <AuthRoute path="/" exact component={Intro} />
         <GuestRoute path="/login" component={Login} />
         <AuthRoute path="/chat/:chatId" component={Chat} />
         <Route component={NotFound} />

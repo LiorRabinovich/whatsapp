@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import moment from 'moment';
 import { makeStyles } from '@material-ui/core/styles';
@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => {
                 fontSize: 11
             },
 
-            '& .received': {
+            '& .read': {
                 color: '#4fc3f7'
             },
 
@@ -71,19 +71,40 @@ const useStyles = makeStyles((theme) => {
                 left: 'auto',
                 right: `-${theme.spacing(1.5)}px`,
             }
+        },
+        displayName: {
+            fontWight: 'bold'
         }
     }
 });
 
-function ViewMessageIcon({ received }) {
-    if (received) return <DoneAllIcon className={'received'} />
+const colorsByUsers = {};
+const allColors = ['#029d00', '#8393ca', '#fd85d4'];
+
+function createColor(messageUid) {
+    if (colorsByUsers[messageUid]) {
+        return colorsByUsers[messageUid]
+    }
+
+    const randomColorIndex = Math.floor(Math.random() * allColors.length);
+    colorsByUsers[messageUid] = allColors[randomColorIndex];
+    return colorsByUsers[messageUid]
+}
+
+function ViewMessageIcon({ read }) {
+    if (read) return <DoneAllIcon className={'read'} />
     return <CheckIcon />;
 }
 
 function ChatMessage({ uid, message, updateRead }) {
     const classes = useStyles();
+    const [color, setColor] = useState('#000');
     const { content, createdAt, displayName, read } = message;
     const me = message.uid === uid;
+
+    useEffect(() => {
+        setColor(createColor(message.uid))
+    }, [message])
 
     useEffect(() => {
         if (!me && !message.read) {
@@ -93,11 +114,11 @@ function ChatMessage({ uid, message, updateRead }) {
 
     return (
         <li className={clsx(classes.root, (me ? classes.me : ''))}>
-            {!me ? <div style={{ color: '#029d00' }}>{displayName}</div> : ''}
+            {!me ? <div className={classes.displayName} style={{ color }}>{displayName}</div> : ''}
             <p>{content}</p>
             <footer>
                 <time dateTime={createdAt}>{moment(createdAt.toDate()).fromNow()}</time>
-                {me ? <ViewMessageIcon classNameReceived={classes.received} received={read} /> : ''}
+                {me ? <ViewMessageIcon classNameRead={classes.read} read={read} /> : ''}
             </footer>
         </li >
     )
