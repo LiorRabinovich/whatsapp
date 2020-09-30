@@ -4,10 +4,10 @@
 - Login with Google
 
 ## Link
-[Whatsapp web](https://whatsapp-3cdf9.web.app/)
+[Whatsapp web](https://whatsapp-3d4be.web.app)
 
 ## [Screenshots](https://github.com/LiorRabinovich/whatsapp/tree/master/screenshots)
-![giphy](https://raw.githubusercontent.com/LiorRabinovich/whatsapp/master/screenshots/giphy.gif)
+![screenshots](https://raw.githubusercontent.com/LiorRabinovich/whatsapp/master/screenshots/screenshots.gif)
 
 ## Scripts
 
